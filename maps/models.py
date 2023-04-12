@@ -44,9 +44,9 @@ class StLouisCityLandTax(models.Model):
     policedist = models.BigIntegerField(blank=True, null=True)
     zip = models.BigIntegerField(blank=True, null=True)
     landuse = models.CharField(max_length=254, blank=True, null=True)
-    neighborho = models.CharField(max_length=254, blank=True, null=True)
+    neighborho = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     zoning = models.CharField(max_length=254, blank=True, null=True)
-    sale = models.CharField(max_length=254, blank=True, null=True)
+    sale = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     point_x = models.FloatField(blank=True, null=True)
     point_y = models.FloatField(blank=True, null=True)
 

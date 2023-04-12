@@ -1,31 +1,33 @@
 import folium
 from django.shortcuts import render
+from django.db.models import Q
 from .utils import *
 from .models import StLouisCityLandTax
 from .forms import StLouisCityLandTaxForm
 
 
 def formViewPage(request):
-    if request.method == 'GET':
+    properties = StLouisCityLandTax.objects.all()
+    if request.method == 'GET' and len(request.GET):
         form = StLouisCityLandTaxForm(request.GET)
         if form.is_valid():
             sale = form.cleaned_data['sale']
             neighborho = form.cleaned_data['neighborho']
-            properties = StLouisCityLandTax.objects.filter(sale__in=sale,
-                                                           neighborho__in=neighborho)
-        else:
-            properties = StLouisCityLandTax.objects.all()
+            if sale:
+                properties = properties.filter(sale__in=sale)
+            if neighborho:
+                properties = properties.filter(neighborho__in=neighborho)
     else:
         form = StLouisCityLandTaxForm()
-        properties = StLouisCityLandTax.objects.all()
+
 
     context = {'form': form, 'properties': properties}
 
-    return render(request, 'maps/partials/_form.html', context)
+    return context #render(request, 'maps/partials/_form.html', context)
 
 
-def foliumMap(request):
-    properties = StLouisCityLandTax.objects.all()
+def foliumMap(properties):
+    #properties = StLouisCityLandTax.objects.all()
 
     # create a Folium map centered on St Louis
     m = folium.Map(location=[38.627003, -90.199402], zoom_start=11)
@@ -51,8 +53,8 @@ def foliumMap(request):
         folium.Marker(coordinates, popup=popup, icon=folium.Icon(prefix='fa', icon='circle', color='blue')).add_to(m)
 
     context = {'map': m._repr_html_()}
-
-    return render(request, 'maps/partials/_map.html', context)
+    return context
+    #return render(request, 'maps/partials/_map.html', context)
 
 
 # def tablePage(request):
@@ -62,11 +64,11 @@ def foliumMap(request):
 
 def combinedView(request):
     form = formViewPage(request)
-    m = foliumMap(request)
+    m = foliumMap(form['properties'])
 
 
     context = {
-        'form': form,
-        'map': m._repr_html_(),
+        'form': form['form'],
+        'map': m['map']
     }
     return render(request, 'maps/StLouisCityLandTaxSale.html', context)

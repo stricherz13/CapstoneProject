@@ -1,12 +1,17 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from .models import StLouisCityLandTax
 
 
-class StLouisCityLandTaxForm(ModelForm):
-    sale = forms.ModelMultipleChoiceField(label='Sale', widget=forms.Select, queryset=StLouisCityLandTax.objects.values_list('sale', flat=True).distinct().order_by('sale'), required=False)
-    neighborho = forms.ModelMultipleChoiceField(label='Neighborhood', widget=forms.SelectMultiple, queryset=StLouisCityLandTax.objects.values_list('neighborho', flat=True).distinct().order_by('neighborho'), required=False)
+class StLouisCityLandTaxForm(Form):
+    sale = forms.MultipleChoiceField(label='Sale', required=False)
+    neighborho = forms.MultipleChoiceField(label='Neighborhood', required=False)
 
-    class Meta:
-        model = StLouisCityLandTax
-        fields = ['sale', 'neighborho']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['sale'].choices = StLouisCityLandTax.objects.values_list('sale', 'sale').distinct().order_by('sale')
+        self.fields['neighborho'].choices = StLouisCityLandTax.objects.values_list('neighborho', 'neighborho').distinct().order_by('neighborho')
+
+    #class Meta:
+    #    model = StLouisCityLandTax
+    #    fields = ['sale', 'neighborho']
