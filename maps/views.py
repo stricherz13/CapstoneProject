@@ -1,7 +1,5 @@
 import folium
 from django.shortcuts import render
-from django.db.models import Q
-from .utils import *
 from .models import StLouisCityLandTax
 from .forms import StLouisCityLandTaxForm
 
@@ -13,22 +11,31 @@ def formViewPage(request):
         if form.is_valid():
             sale = form.cleaned_data['sale']
             neighborho = form.cleaned_data['neighborho']
+            landuse = form.cleaned_data['landuse']
+            zoning = form.cleaned_data['zoning']
+            policedist = form.cleaned_data['policedist']
+            zip = form.cleaned_data['zip']
             if sale:
                 properties = properties.filter(sale__in=sale)
             if neighborho:
                 properties = properties.filter(neighborho__in=neighborho)
+            if landuse:
+                properties = properties.filter(landuse__in=landuse)
+            if zoning:
+                properties = properties.filter(zoning__in=zoning)
+            if policedist:
+                properties = properties.filter(policedist__in=policedist)
+            if zip:
+                properties = properties.filter(zip__in=zip)
     else:
         form = StLouisCityLandTaxForm()
 
-
     context = {'form': form, 'properties': properties}
 
-    return context #render(request, 'maps/partials/_form.html', context)
+    return context
 
 
 def foliumMap(properties):
-    #properties = StLouisCityLandTax.objects.all()
-
     # create a Folium map centered on St Louis
     m = folium.Map(location=[38.627003, -90.199402], zoom_start=11)
 
@@ -45,7 +52,6 @@ def foliumMap(properties):
     # add markers to the map for each station
     for i in properties:
         coordinates = (i.point_y, i.point_x)
-        # folium.Marker(coordinates).add_to(m)
         iframe = folium.IFrame(
             f"Land tax ID: {i.land_id}" + '<br>' + f"Owner: {i.owner}" + '<br>' + f"Address: {i.address}" + '<br>' +
             f"Total: {i.total}" + '<br>' + f"<a href = https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={i.handle} target = _blank > Geo St.Louis Link </a>")
@@ -54,18 +60,16 @@ def foliumMap(properties):
 
     context = {'map': m._repr_html_()}
     return context
-    #return render(request, 'maps/partials/_map.html', context)
 
 
-# def tablePage(request):
-#
-#     return render(request, 'maps/partials/_table.html')
+# def tablePage(properties):
+#     context = {'':}
+#     return context
 
 
 def combinedView(request):
     form = formViewPage(request)
     m = foliumMap(form['properties'])
-
 
     context = {
         'form': form['form'],

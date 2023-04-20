@@ -7,24 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="ThemeStarz">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'fonts/font-awesome.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/jquery.slider.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/MarkerCluster.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-          crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-            integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-            crossorigin=""></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" type="text/css">
     <title>STL Tax Auction Map</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203130756-1"></script>
-    <script>
+        <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -44,47 +36,35 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand nav" id="brand">
-{#                    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="brand" style="width: 75px;height: 75px;"></a>#}
+                    <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="brand" style="width: 75px;height: 75px;"></a>
                 </div>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                 <ul class="nav navbar-nav">
-{#                    <li><a href="{% url 'home' %}">Homepage</a></li>#}
-{#                    <li class="has-child"><a href="{% url 'home' %}">Maps</a>#}
-{#                        <ul class="child-navigation">#}
-{#                            <li class="has-child"><a href="{% url 'home' %}">St Louis City 2022</a>#}
-{#                                <ul class="child-navigation">#}
-{#                                    <li><a href="{% url 'maps:stlouiscitysale208' %}">Sale 208</a></li>#}
-{#                                    <li><a href="{% url 'maps:stlouiscitysale211' %}">Sale 211</a></li>#}
-{#                                    <li><a href="{% url 'maps:stlouiscitysale212' %}">Sale 212</a></li>#}
-{#                                    <li><a href="{% url 'maps:stlouiscitysale213' %}">Sale 213</a></li>#}
-{#                                    <li><a href="{% url 'maps:coming_soon' %}">Sale 214</a></li>#}
-{#                                </ul>#}
-{#                            <li><a href="{% url 'maps:coming_soon' %}">St Louis County 2022</a></li>#}
-{#                            <li><a href="{% url 'maps:coming_soon' %}">St Charles County 2022</a></li>#}
-{#                            <li><a href="{% url 'maps:coming_soon' %}">Jefferson County 2022</a></li>#}
-{#                        </ul>#}
-{#                    </li>#}
-{#                    <li class="has-child"><a href="{% url 'dashboards:coming_soon' %}">Dashboards</a>#}
-{#                        <ul class="child-navigation">#}
-{#                            <li class="has-child"><a href="{% url 'dashboards:coming_soon' %}">St Louis City 2022</a>#}
-{#                                <ul class="child-navigation">#}
-{#                                    <li><a href="{% url 'dashboards:coming_soon' %}">Sale 208</a></li>#}
-{#                                    <li><a href="{% url 'dashboards:coming_soon' %}">Sale 211</a></li>#}
-{#                                    <li><a href="{% url 'dashboards:coming_soon' %}">Sale 212</a></li>#}
-{#                                    <li><a href="{% url 'dashboards:coming_soon' %}">Sale 213</a></li>#}
-{#                                    <li><a href="{% url 'dashboards:coming_soon' %}">Sale 214</a></li>#}
-{#                                </ul>#}
-{#                            <li><a href="{% url 'dashboards:coming_soon' %}">St Louis County 2022</a></li>#}
-{#                            <li><a href="{% url 'dashboards:coming_soon' %}">St Charles County 2022</a></li>#}
-{#                            <li><a href="{% url 'dashboards:coming_soon' %}">Jefferson County 2022</a></li>#}
-{#                        </ul>#}
-{#                    </li>#}
-{#                    <li><a href="{% url 'about' %}">About</a></li>#}
-{#                    <li><a href="{% url 'faq' %}">FAQ</a></li>#}
-{#                    <li><a href="{% url 'donate' %}">Donate</a></li>#}
-{#                    <li><a href="{% url 'contact' %}">Contact</a></li>#}
-{#                    <li><a href="{% url 'terms' %}">Terms of Services</a></li>#}
+                    <li><a href="{% url 'home' %}">Homepage</a></li>
+                    <li class="has-child"><a href="{% url 'home' %}">Maps</a>
+                        <ul class="child-navigation">
+                            <li class="has-child"><a href="{% url 'home' %}">St Louis City 2022</a>
+                                <ul class="child-navigation">
+                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale' %}">2022 St Louis City Land Tax Sales</a></li>
+                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale' %}">2022 Land Reutilization Authority</a></li>
+                                </ul>
+                        </ul>
+                    </li>
+                    <li class="has-child"><a href="#">Dashboards</a>
+                        <ul class="child-navigation">
+                            <li class="has-child"><a href="#">St Louis City 2022</a>
+                                <ul class="child-navigation">
+                                    <li><a href="{% url 'dashboards:2022StLouisLandTaxDashboard' %}">2022 St Louis City Land Tax Sales</a></li>
+                                    <li><a href="{% url 'dashboards:2022LRADashboard' %}">2022 Land Reutilization Authority</a></li>
+                                </ul>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'donate' %}">Donate</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'terms' %}">Terms of Services</a></li>
                 </ul>
             </nav><!-- /.navbar collapse-->
         </header><!-- /.navbar -->
@@ -96,7 +76,7 @@
 <script type="text/javascript" src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-{#<script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>#}
+<script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
@@ -104,7 +84,7 @@
 <script type="text/javascript" src="{% static 'js/icheck.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.vanillabox-0.1.5.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/retina-1.1.0.min.js' %}"></script>
-{#<script type="text/javascript" src="{% static 'js/smoothscroll.js' %}></script>#}
+<script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jshashtable-2.1_src.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.numberformatter-1.2.3.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.numberformatter-1.2.3.js' %}"></script>
@@ -128,7 +108,7 @@
 
                                 </p>
                                 <hr>
-{#                                <a href="{% url 'about' %}" class="link-arrow">Read More</a>#}
+                                <a href="{% url 'about' %}" class="link-arrow">Read More</a>
                             </article>
                         </div><!-- /.col-sm-3 -->
                         <div class="col-md-4 col-sm-4">

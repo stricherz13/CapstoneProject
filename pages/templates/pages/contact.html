@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<body>
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Contact</li>
+            </ol>
+        </div>
+        {% if form_contact_name %}
+             <center>
+                <h2>Thanks {{ form_contact_name }}!</h2>
+                <p>We received your email and will respond shortly.</p>
+            </center>
+        {% endif %}
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <div class="row">
+                <!-- Contact -->
+                <div class="col-md-9 col-sm-9">
+                    <section id="agent-detail">
+                        <header><h1>Contact Us</h1></header>
+                        <section id="contact-information">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-5">
+                                    <section id="address">
+                                        <header><h3>Address</h3></header>
+                                        <address>
+                                            <strong>STL Tax Auction Map</strong><br>
+                                            St Louis, MO
+                                        </address>
+                                        <a href = "mailto: stltaxauctionmap@gmail.com">stltaxauctionmap@gmail.com</a>
+                                    </section><!-- /#address -->
+                                    <section id="social">
+                                        <header><h3>Social Profiles</h3></header>
+                                        <div class="agent-social">
+                                            <a href="https://twitter.com/stl_map" class="fa fa-twitter btn btn-grey-dark"></a>
+                                            <a href="https://www.facebook.com/stltaxauctionmap" class="fa fa-facebook btn btn-grey-dark"></a>
+                                        </div>
+                                    </section><!-- /#social -->
+                                </div><!-- /.col-md-4 -->
+                            </div><!-- /.row -->
+                        </section><!-- /#agent-info -->
+                        <hr class="thick">
+                        <section id="form">
+                            <header><h3>Send Us a Message</h3></header>
+                            <form action="{% url 'contact' %}" class="clearfix" id="form-contact" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-name">Your Name<em>*</em></label>
+                                            <input type="text" class="form-control" id="form-contact-name" name="form-contact-name" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-email">Your Email<em>*</em></label>
+                                            <input type="email" class="form-control" id="form-contact-email" name="form-contact-email" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form-contact-message">Your Message<em>*</em></label>
+                                            <textarea class="form-control" id="form-contact-message" rows="8" name="form-contact-message" required></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+                                <div class="form-group clearfix">
+                                    <button type="submit" value="Submit" class="btn pull-right btn-default" id="form-contact-submit">Send a Message</button>
+                                </div><!-- /.form-group -->
+                                <div id="form-status"></div>
+                            </form><!-- /#form-contact -->
+                        </section>
+                    </section><!-- /#agent-detail -->
+                </div><!-- /.col-md-9 -->
+                <!-- end Contact -->
+</body>
+{% endblock %}
