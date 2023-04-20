@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<body>
+<div class="container">
+    <div width="100%" class=".about_page">
+        <h1>About STL Tax Auction Map</h1>
+            <p>STL Tax Auction Map is a tool to help real estate investors in the St Louis area identify potential investment properties from land tax auctions. STL Tax Auction Map maps the available properties and uses publicly available information to allow the user to query the properties based on location and property features. .</p>
+            <br>
+        <h2 class="">Questions &amp; Comments</h2>
+            <p>Please send any feedback, questions, or feature requests to my<!-- --> <a href="omailt:stltaxauctionmap@gmail.com">email address</a>. I love to hear from users and value the feedback.</p>
+            <br>
+        <h2 class="">Attributions</h2>
+            <p>All data used in STL Tax Auction Map are publicly available datasets from city, county, and state government offices. </p>
+            <br>
+        <h2 class="">Technology Stack</h2>
+            <p>While I hope STL Tax Auction Map is useful, I realize it is a very niche tool. I use STL Tax Auction Map as an opportunity to work with technologies I want to learn or have a preference for that I don't necessarily get to use at my day job. Here is what the site is currently built with:</p><p>The application is written in <!-- --> <a href="https://www.djangoproject.com/">Django</a>.</p>
+            <p>Geoprocessing of the data is handled in <!-- --> <a href="https://www.qgis.org/en/site/">QGIS</a>. On the <strong>backend</strong> the site uses <!-- --> <a href="https://www.postgresql.org/">PostgreSQL</a> database with the  <!-- --> <a href="https://postgis.net/">PostGIS extension</a> to handle the vector data. The vector data is served as a Web Feature Service using <!-- --> <a href="https://geoserver.org/">Geoserver</a>. </p>
+        <p>The <strong>frontend</strong> is built with<!-- --> <a href="https://docs.djangoproject.com/en/4.0/ref/templates/language/">Django template language</a>. Styling is handled using<!-- --> <a href="https://getbootstrap.com/">bootstrap</a>. The JavaScript map library is provided by <!-- --> <a href="https://leafletjs.com/">Leaflet</a></p>
+    </div>
+</div>
+</body>
+{% endblock %}

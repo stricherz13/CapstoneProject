@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "maps",
     "dashboards",
     "crispy_forms",
+    "pages",
 ]
 
 MIDDLEWARE = [

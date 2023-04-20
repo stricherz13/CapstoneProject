@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    path("StLouisCityLandTaxSale/", views.combinedView, name='combined_view'),
+app_name = 'maps'
 
+urlpatterns = [
+    path("2022StLouisLandTaxMap", views.combinedView, name='StLouisCityLandTaxSale')
 ]
