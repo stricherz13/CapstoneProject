@@ -18,6 +18,7 @@ class LRA2022(models.Model):
     point_y = models.FloatField(blank=True, null=True)
 
     class Meta:
+        managed=False
         db_table = 'LRA_2022'
 
 
@@ -33,7 +34,7 @@ class StLouisCityLandTax(models.Model):
     bdg1strycd = models.BigIntegerField(blank=True, null=True, db_index=True)
     ward = models.BigIntegerField(blank=True, null=True, db_index=True)
     policedist = models.BigIntegerField(blank=True, null=True, db_index=True)
-    zip = models.BigIntegerField(blank=True, null=True, db_index=True)
+    zip = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     landuse = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     neighborho = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     zoning = models.CharField(max_length=254, blank=True, null=True, db_index=True)
@@ -42,4 +43,5 @@ class StLouisCityLandTax(models.Model):
     point_y = models.FloatField(blank=True, null=True, db_index=True)
 
     class Meta:
+        managed=False
         db_table = 'StLouisCity_2022'

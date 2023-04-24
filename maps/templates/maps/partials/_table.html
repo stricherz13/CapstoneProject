@@ -1,4 +1,34 @@
 {% load static %}
-<div>
-    <h1>Hello World</h1>
+<div class="container">
+    <table class="table table-bordered" id="data-table" style="text-align: center">
+        <thead class="table-success">
+        <tr>
+            <th>Handle</th>
+            <th>Land Tax ID #</th>
+            <th>Owner</th>
+            <th>Address</th>
+            <th>Total</th>
+            <th>Neighborhood</th>
+            <th>Land use</th>
+            <th>Zoning</th>
+            <th>Geo St. Louis</th>
+            <th>Google Street View</th>
+        </tr>
+        </thead>
+{#        Data from backend #}
+        {% for data in table %}
+        <tr>
+            <td>{{ data.handle }}</td>
+            <td>{{ data.land_id }}</td>
+            <td>{{ data.owner }}</td>
+            <td>{{ data.address }}</td>
+            <td>{{ data.total }}</td>
+            <td>{{ data.neighborho }}</td>
+            <td>{{ data.landuse }}</td>
+            <td>{{ data.zoning }}</td>
+            <td><a href="https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={{ data.handle }}" target="_blank">Link</a></td>
+            <td><a href="https://www.instantstreetview.com/s/{{ data.address }}" target="_blank">Link</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>

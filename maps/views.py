@@ -62,17 +62,19 @@ def foliumMap(properties):
     return context
 
 
-# def tablePage(properties):
-#     context = {'':}
-#     return context
+def tablePage(properties):
+    context = {'table': properties}
+    return context
 
 
 def combinedView(request):
     form = formViewPage(request)
     m = foliumMap(form['properties'])
+    table = tablePage(form['properties'])
 
     context = {
         'form': form['form'],
-        'map': m['map']
+        'map': m['map'],
+        'table': table['table']
     }
     return render(request, 'maps/StLouisCityLandTaxSale.html', context)
