@@ -8,4 +8,4 @@ class StLouisLandTaxDashboard2022(TemplateView):
     template_name = 'dashboards/2022StLouisLandTaxDashboard.html'
 
 class LRADashboard2022(TemplateView):
-    template_name = 'dashboards/2022LRADashboard.html'
+    template_name = 'dashboards/LRADashboard.html'
