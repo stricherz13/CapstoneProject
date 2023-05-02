@@ -7,5 +7,8 @@ from django.views.generic import TemplateView
 class StLouisLandTaxDashboard2022(TemplateView):
     template_name = 'dashboards/2022StLouisLandTaxDashboard.html'
 
-class LRADashboard2022(TemplateView):
+class StLouisLandTaxDashboard2023(TemplateView):
+    template_name = 'dashboards/StLouisLandTaxDashboard2023.html'
+
+class LRADashboard(TemplateView):
     template_name = 'dashboards/LRADashboard.html'
