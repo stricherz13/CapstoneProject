@@ -2,6 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8LRS38QCZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z8LRS38QCZ');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +27,16 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/MarkerCluster.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+          type="text/css">
     <title>STL Tax Auction Map</title>
-        <script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-203130756-1');
@@ -36,7 +54,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand nav" id="brand">
-                    <a href="{% url 'home' %}"><img src="{% static 'img/Logo.png' %}" alt="brand" style="width: 75px;height: 75px;"></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'img/Logo.png' %}" alt="brand"
+                                                    style="width: 75px;height: 75px;"></a>
                 </div>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -46,9 +65,11 @@
                         <ul class="child-navigation">
                             <li class="has-child"><a href="{% url 'home' %}">St Louis City</a>
                                 <ul class="child-navigation">
-                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale2023' %}">2023 St Louis City Land Tax Sales</a></li>
+                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale2023' %}">2023 St Louis City Land
+                                        Tax Sales</a></li>
                                     <li><a href="{% url 'maps:LRA' %}">Land Reutilization Authority</a></li>
-                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale' %}">2022 St Louis City Land Tax Sales</a></li>
+                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale' %}">2022 St Louis City Land Tax
+                                        Sales</a></li>
                                 </ul>
                         </ul>
                     </li>
@@ -56,8 +77,10 @@
                         <ul class="child-navigation">
                             <li class="has-child"><a href="#">St Louis City 2022</a>
                                 <ul class="child-navigation">
-                                    <li><a href="{% url 'dashboards:2022StLouisLandTaxDashboard' %}">2022 St Louis City Land Tax Sales</a></li>
-                                    <li><a href="{% url 'dashboards:2022LRADashboard' %}">2022 Land Reutilization Authority</a></li>
+                                    <li><a href="{% url 'dashboards:2022StLouisLandTaxDashboard' %}">2022 St Louis City
+                                        Land Tax Sales</a></li>
+                                    <li><a href="{% url 'dashboards:2022LRADashboard' %}">2022 Land Reutilization
+                                        Authority</a></li>
                                 </ul>
                         </ul>
                     </li>
@@ -105,7 +128,8 @@
                         <div class="col-md-4 col-sm-4">
                             <article>
                                 <h3>About Us</h3>
-                                <p>STL Tax Auction Map was created to provide greater transparency and to introduce perspective investors to the Land Tax Sales in St Louis and the surrounding areas.
+                                <p>STL Tax Auction Map was created to provide greater transparency and to introduce
+                                    perspective investors to the Land Tax Sales in St Louis and the surrounding areas.
 
                                 </p>
                                 <hr>
@@ -119,16 +143,20 @@
                                     <strong>STL Tax Auction Map</strong><br>
                                     St Louis, MO
                                 </address>
-                                <a href = "mailto: stltaxauctionmap@gmail.com">stltaxauctionmap@gmail.com</a>
+                                <a href="mailto: stltaxauctionmap@gmail.com">stltaxauctionmap@gmail.com</a>
                             </article>
                         </div><!-- /.col-sm-3 -->
                         <div class="col-md-4 col-sm-4">
                             <article>
                                 <h3>Useful Links</h3>
                                 <ul class="list-unstyled list-links">
-                                    <li><a href="https://www.stlouis-mo.gov/government/departments/sheriff/land-tax-sales.cfm" target="_blank">St Louis City Land Tax Sale Dates</a></li>
-                                    <li><a href="https://mostlouiscity.fidlar.com/MOStLouis/DirectSearch/#/search" target="_blank">St Louis City Lien Search</a></li>
-                                    <li><a href="https://missouritaxsales.com/" target="_blank">Sweet Law Office Missouri Tax Sales</a></li>
+                                    <li>
+                                        <a href="https://www.stlouis-mo.gov/government/departments/sheriff/land-tax-sales.cfm"
+                                           target="_blank">St Louis City Land Tax Sale Dates</a></li>
+                                    <li><a href="https://mostlouiscity.fidlar.com/MOStLouis/DirectSearch/#/search"
+                                           target="_blank">St Louis City Lien Search</a></li>
+                                    <li><a href="https://missouritaxsales.com/" target="_blank">Sweet Law Office
+                                        Missouri Tax Sales</a></li>
                                     <li><a href="{% url 'faq' %}">FAQ</a></li>
                                     <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
                                 </ul>
