@@ -44,10 +44,11 @@
                     <li><a href="{% url 'home' %}">Homepage</a></li>
                     <li class="has-child"><a href="{% url 'home' %}">Maps</a>
                         <ul class="child-navigation">
-                            <li class="has-child"><a href="{% url 'home' %}">St Louis City 2022</a>
+                            <li class="has-child"><a href="{% url 'home' %}">St Louis City</a>
                                 <ul class="child-navigation">
+                                    <li><a href="{% url 'maps:StLouisCityLandTaxSale2023' %}">2023 St Louis City Land Tax Sales</a></li>
+                                    <li><a href="{% url 'maps:LRA' %}">Land Reutilization Authority</a></li>
                                     <li><a href="{% url 'maps:StLouisCityLandTaxSale' %}">2022 St Louis City Land Tax Sales</a></li>
-                                    <li><a href="{% url 'maps:LRA' %}">2022 Land Reutilization Authority</a></li>
                                 </ul>
                         </ul>
                     </li>
