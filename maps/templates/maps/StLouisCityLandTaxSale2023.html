@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block content %}
     <body>
     <div class="wrapper">
@@ -9,18 +10,18 @@
             <div class="search-box-wrapper">
                 <div class="search-box-inner">
                     <div class="search-box map">
-                        {% include 'maps/partials/_form.html' %}
+                        {% include 'maps/partials/_STLform2023.html' %}
                     </div><!-- /.search-box.map -->
                 </div><!-- /.search-box-inner -->
             </div>
             <!-- Map -->
             <div class="map-wrapper">
-                {% include 'maps/partials/_map.html' %}
+                {% include 'maps/partials/_STLmap2023.html' %}
             </div>
             <!-- end Map -->
         </div>
     </div>
     <!-- Table -->
-    {% include 'maps/partials/_table.html' %}
+    {% include 'maps/partials/_STLtable2023.html' %}
     </body>
 {% endblock %}
