@@ -126,7 +126,7 @@ class StLouisCityLandTax(models.Model):
 
 class StLouisCityLandTaxModel2023(models.Model):
     sale = models.CharField(max_length=254, blank=True, null=True, db_index=True)
-    land_id = models.CharField(max_length=254, blank=True, null=True, db_index=True)
+    landtaxid = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     address = models.CharField(max_length=254, blank=True, null=True, db_index=True)
     total = models.FloatField(blank=True, null=True, db_index=True)
     handle = models.CharField(max_length=16, blank=True, null=True, db_index=True)
@@ -223,4 +223,4 @@ class StLouisCityLandTaxModel2023(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Sale216'
+        db_table = 'stlouiscity2023'
