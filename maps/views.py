@@ -53,7 +53,7 @@ def foliumMap(properties):
     for i in properties:
         coordinates = (i.point_y, i.point_x)
         iframe = folium.IFrame(
-            f"Land tax ID: {i.land_id}" + '<br>' + f"Owner: {i.owner}" + '<br>' + f"Address: {i.address}" + '<br>' +
+            f"Land tax ID: {i.landtaxid}" + '<br>' + f"Owner: {i.owner}" + '<br>' + f"Address: {i.address}" + '<br>' +
             f"Total: {i.total}" + '<br>' + f"<a href = https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={i.handle} target = _blank > Geo St.Louis Link </a>")
         popup = folium.Popup(iframe, min_width=300, max_width=300)
         folium.Marker(coordinates, popup=popup, icon=folium.Icon(prefix='fa', icon='circle', color='blue')).add_to(m)
@@ -206,7 +206,7 @@ def formViewPageSTL2023(request):
 
 def foliumMapSTL2023(propertiesSTL2023):
     # create a Folium map centered on St Louis
-    m = folium.Map(location=[38.627003, -90.199402], zoom_start=13, prefer_canvas=True)
+    m = folium.Map(location=[38.627003, -90.199402], zoom_start=12, prefer_canvas=True)
 
     # add tile layer control and tile layer
     folium.TileLayer(
@@ -222,7 +222,7 @@ def foliumMapSTL2023(propertiesSTL2023):
     for i in propertiesSTL2023:
         coordinates = (i.point_y, i.point_x)
         iframe = folium.IFrame(
-            f"Land Tax ID: {i.land_id}" + '<br>' + f"Owner: {i.ownername}" + '<br>' + f"Address: {i.address}" + '<br>' + f"Total: {i.total}" + '<br>' +
+            f"Land Tax ID: {i.landtaxid}" + '<br>' + f"Owner: {i.ownername}" + '<br>' + f"Address: {i.address}" + '<br>' + f"Total: {i.total}" + '<br>' +
             f"Neighborhood: {i.neighborho}" + '<br>' + f"Ward: {i.ward20}" + '<br>' + f"Land Use: {i.landuse}" + '<br>' + f"Zoning: {i.zoning}" + '<br>' +
             f"Vacant lot: {i.vacantland}" + '<br>' + f"<a href =https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={i.handle} target=_blank>Geo St.Louis Link</a>")
         popup = folium.Popup(iframe, min_width=300, max_width=300)
