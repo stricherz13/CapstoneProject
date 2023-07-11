@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="ThemeStarz">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'fonts/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" type="text/css">
@@ -16,7 +17,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
           type="text/css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" type="text/css">
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <title>STL Tax Auction Map</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8LRS38QCZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -29,19 +34,6 @@
         gtag('config', 'UA-203130756-1');
     </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8LRS38QCZ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-Z8LRS38QCZ');
-</script>
 <body class="page-homepage map-leaflet" id="page-top" data-spy="scroll" data-target=".navigation" data-offset="90">
 <div class="navigation">
     <div class="container">
@@ -75,7 +67,7 @@
                     </li>
                     <li class="has-child"><a href="#">Dashboards</a>
                         <ul class="child-navigation">
-                            <li class="has-child"><a href="#">St Louis City 2022</a>
+                            <li class="has-child"><a href="#">St Louis City</a>
                                 <ul class="child-navigation">
                                     <li><a href="{% url 'dashboards:2023StLouisLandTaxDashboard' %}">2023 St Louis City
                                         Land Tax Sales</a></li>

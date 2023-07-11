@@ -53,7 +53,7 @@ def foliumMap(properties):
     for i in properties:
         coordinates = (i.point_y, i.point_x)
         iframe = folium.IFrame(
-            f"Land tax ID: {i.landtaxid}" + '<br>' + f"Owner: {i.owner}" + '<br>' + f"Address: {i.address}" + '<br>' +
+            f"Land tax ID: {i.land_id}" + '<br>' + f"Owner: {i.owner}" + '<br>' + f"Address: {i.address}" + '<br>' +
             f"Total: {i.total}" + '<br>' + f"<a href = https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={i.handle} target = _blank > Geo St.Louis Link </a>")
         popup = folium.Popup(iframe, min_width=300, max_width=300)
         folium.Marker(coordinates, popup=popup, icon=folium.Icon(prefix='fa', icon='circle', color='blue')).add_to(m)

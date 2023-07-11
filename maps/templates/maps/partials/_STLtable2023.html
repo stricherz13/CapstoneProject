@@ -1,6 +1,12 @@
 {% load static %}
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
 <div class="container">
-    <table class="table table-bordered" id="data-table" style="text-align: center">
+    <table class="table table-striped table-bordered table-sm" id="dtBasicExample">
         <thead class="table-success">
         <tr>
             <th>Handle</th>
@@ -19,24 +25,26 @@
             <th>Google Street View</th>
         </tr>
         </thead>
-        {#        Data from backend #}
-        {% for data in table %}
-            <tr>
-                <td>{{ data.handle }}</td>
-                <td>{{ data.landtaxid }}</td>
-                <td>{{ data.ownername }}</td>
-                <td>{{ data.address }}</td>
-                <td>{{ data.total }}</td>
-                <td>{{ data.neighborho }}</td>
-                <td>{{ data.ward20 }}</td>
-                <td>{{ data.landuse }}</td>
-                <td>{{ data.zoning }}</td>
-                <td>{{ data.vacantland }}</td>
-                <td>{{ data.numunits}}</td>
-                <td>{{ data.numbldgs}}</td>
-                <td><a href="https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={{ data.handle }}" target="_blank">Link</a></td>
-                <td><a href="https://www.instantstreetview.com/s/{{ data.address }}" target="_blank">Link</a></td>
-            </tr>
-        {% endfor %}
+        <tbody>
+            {% for data in table %}
+                <tr>
+                    <td>{{ data.handle }}</td>
+                    <td>{{ data.landtaxid }}</td>
+                    <td>{{ data.ownername }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.total }}</td>
+                    <td>{{ data.neighborho }}</td>
+                    <td>{{ data.ward20 }}</td>
+                    <td>{{ data.landuse }}</td>
+                    <td>{{ data.zoning }}</td>
+                    <td>{{ data.vacantland }}</td>
+                    <td>{{ data.numunits }}</td>
+                    <td>{{ data.numbldgs }}</td>
+                    <td><a href="https://dynamic.stlouis-mo.gov/citydata/newdesign/data.cfm?Handle={{ data.handle }}"
+                           target="_blank">Link</a></td>
+                    <td><a href="https://www.instantstreetview.com/s/{{ data.address }}" target="_blank">Link</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </div>
