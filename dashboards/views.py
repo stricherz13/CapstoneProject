@@ -12,3 +12,6 @@ class StLouisLandTaxDashboard2023(TemplateView):
 
 class LRADashboard(TemplateView):
     template_name = 'dashboards/LRADashboard.html'
+
+class StCharlesCountyLandTaxDashboard(TemplateView):
+    template_name = 'dashboards/StCharlesCountyLandTaxDashboard.html'

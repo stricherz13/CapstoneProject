@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import Form
-from .models import StLouisCityLandTax, LRAModel, StLouisCityLandTaxModel2023
+from .models import StLouisCityLandTax, LRAModel, StLouisCityLandTaxModel2023, StCharles2023Model
 
 
 class StLouisCityLandTaxForm(Form):
@@ -95,3 +95,41 @@ class StLouisCityLandTaxForm2023(Form):
         self.fields['numbldgs'].choices = StLouisCityLandTaxModel2023.objects.values_list('numbldgs',
                                                                                           'numbldgs').distinct().order_by(
             'numbldgs')
+
+
+class StCharlesCountyLandTaxForm(Form):
+    municipali = forms.MultipleChoiceField(label='Municipality', required=False)
+    proptype = forms.MultipleChoiceField(label='Property type', required=False)
+    situszip = forms.MultipleChoiceField(label='Zip code', required=False)
+    schooldist = forms.MultipleChoiceField(label="School district", required=False)
+    bedrooms = forms.MultipleChoiceField(label="Bedrooms", required=False)
+    bathrooms = forms.MultipleChoiceField(label="Bathrooms", required=False)
+    halfbathro = forms.MultipleChoiceField(label="Half baths", required=False)
+    garagestal = forms.MultipleChoiceField(label="Garage stalls", required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['municipali'].choices = StCharles2023Model.objects.values_list('municipali',
+                                                                                   'municipali').distinct().order_by(
+            'municipali')
+        self.fields['proptype'].choices = StCharles2023Model.objects.values_list('proptype',
+                                                                                 'proptype').distinct().order_by(
+            'proptype')
+        self.fields['situszip'].choices = StCharles2023Model.objects.values_list('situszip',
+                                                                                 'situszip').distinct().order_by(
+            'situszip')
+        self.fields['schooldist'].choices = StCharles2023Model.objects.values_list('schooldist',
+                                                                                        'schooldist').distinct().order_by(
+            'schooldist')
+        self.fields['bedrooms'].choices = StCharles2023Model.objects.values_list('bedrooms',
+                                                                                 'bedrooms').distinct().order_by(
+            'bedrooms')
+        self.fields['bathrooms'].choices = StCharles2023Model.objects.values_list('bathrooms',
+                                                                                  'bathrooms').distinct().order_by(
+            'bathrooms')
+        self.fields['halfbathro'].choices = StCharles2023Model.objects.values_list('halfbathro',
+                                                                                   'halfbathro').distinct().order_by(
+            'halfbathro')
+        self.fields['garagestal'].choices = StCharles2023Model.objects.values_list('garagestal',
+                                                                                      'garagestal').distinct().order_by(
+            'garagestal')

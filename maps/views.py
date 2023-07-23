@@ -1,7 +1,7 @@
 import folium
 from django.shortcuts import render
-from .models import StLouisCityLandTax, LRAModel, StLouisCityLandTaxModel2023
-from .forms import StLouisCityLandTaxForm, LRAForm, StLouisCityLandTaxForm2023
+from .models import StLouisCityLandTax, LRAModel, StLouisCityLandTaxModel2023, StCharles2023Model
+from .forms import StLouisCityLandTaxForm, LRAForm, StLouisCityLandTaxForm2023, StCharlesCountyLandTaxForm
 
 
 def formViewPage(request):
@@ -248,3 +248,88 @@ def combinedViewSTL2023(request):
         'table': table['tableSTL2023']
     }
     return render(request, 'maps/StLouisCityLandTaxSale2023.html', context)
+
+
+# St Charles 2023 views below
+def formViewPageStCharlesCounty2023(request):
+    properties = StCharles2023Model.objects.all()
+    if request.method == 'GET' and len(request.GET):
+        form = StCharlesCountyLandTaxForm(request.GET)
+        if form.is_valid():
+            municipali = form.cleaned_data['municipali']
+            proptype = form.cleaned_data['proptype']
+            situszip = form.cleaned_data['situszip']
+            schooldist = form.cleaned_data['schooldist']
+            bedrooms = form.cleaned_data['bedrooms']
+            bathrooms = form.cleaned_data['bathrooms']
+            halfbathro = form.cleaned_data['halfbathro']
+            garagestal = form.cleaned_data['garagestal']
+
+            if municipali:
+                properties = properties.filter(municipali__in=municipali)
+            if proptype:
+                properties = properties.filter(proptype__in=proptype)
+            if situszip:
+                properties = properties.filter(situszip__in=situszip)
+            if schooldist:
+                properties = properties.filter(schooldist__in=schooldist)
+            if bedrooms:
+                properties = properties.filter(bedrooms__in=bedrooms)
+            if bathrooms:
+                properties = properties.filter(bathrooms__in=bathrooms)
+            if halfbathro:
+                properties = properties.filter(halfbathro__in=halfbathro)
+            if garagestal:
+                properties = properties.filter(garagestal__in=garagestal)
+    else:
+        form = StCharlesCountyLandTaxForm()
+
+    context = {'form': form, 'propertiesStCharlesCounty2023': properties}
+
+    return context
+
+
+def foliumMapStCharlesCounty2023(propertiesStCharlesCounty2023):
+    # create a Folium map centered on St Louis
+    m = folium.Map(location=[38.788105, -90.497437], zoom_start=10.4, prefer_canvas=True)
+
+    # add tile layer control and tile layer
+    folium.TileLayer(
+        tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attr='Esri',
+        name='Esri Satellite',
+        overlay=False,
+        control=True
+    ).add_to(m)
+    folium.LayerControl().add_to(m)
+
+    # add markers to the map for each station
+    for i in propertiesStCharlesCounty2023:
+        coordinates = (i.point_y, i.point_x)
+        iframe = folium.IFrame(
+            f"Parcel ID: {i.parcel_id}" + '<br>' + f"Name: {i.name}" + '<br>' + f"Address: {i.siteaddres}" + '<br>' + f"Total: {i.total}" + '<br>' +
+            f"Municipality: {i.municipali}" + '<br>' + f"School district: {i.schooldist}" + '<br>' + f"Bedrooms: {i.bedrooms}" + '<br>' + f"Bathrooms: {i.bathrooms}" + '<br>' +
+            f"<a href={ i.sketch } target=_blank>Sketch</a>" + '<br>' + f"<a href={ i.parcelrepo } target=_blank>Parcel report</a>" + '<br>' + f"<a href={ i.glink } target=_blank>Google Maps</a>")
+        popup = folium.Popup(iframe, min_width=300, max_width=300)
+        folium.Marker(coordinates, popup=popup, icon=folium.Icon(prefix='fa', icon='circle', color='blue')).add_to(m)
+
+    context = {'mapStCharlesCounty2023': m._repr_html_()}
+    return context
+
+
+def tablePageStCharlesCounty2023(propertiesStCharlesCounty2023):
+    context = {'tableStCharlesCounty2023': propertiesStCharlesCounty2023}
+    return context
+
+
+def StCharles2023combinedView(request):
+    form = formViewPageStCharlesCounty2023(request)
+    m = foliumMapStCharlesCounty2023(form['propertiesStCharlesCounty2023'])
+    table = tablePageStCharlesCounty2023(form['propertiesStCharlesCounty2023'])
+
+    context = {
+        'form': form['form'],
+        'map': m['mapStCharlesCounty2023'],
+        'table': table['tableStCharlesCounty2023']
+    }
+    return render(request, 'maps/StCharlesCountyTaxSale2023.html', context)

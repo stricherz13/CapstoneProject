@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <body>
+    <div class="wrapper">
+        <div class="search-map-wrapper">
+            <!-- Search Box -->
+            <div class="search-box-wrapper">
+                <div class="search-box-inner">
+                    <div class="search-box map">
+                        {% include 'maps/partials/_StCharlesform2023.html' %}
+                    </div><!-- /.search-box.map -->
+                </div><!-- /.search-box-inner -->
+            </div>
+            <!-- Map -->
+            <div class="map-wrapper">
+                {% include 'maps/partials/_StCharlesmap2023.html' %}
+            </div>
+            <!-- end Map -->
+        </div>
+    </div>
+    <!-- Table -->
+    {% include 'maps/partials/_StCharlestable2023.html' %}
+    </body>
+{% endblock %}
