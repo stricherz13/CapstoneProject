@@ -1,0 +1,43 @@
+{% load static %}
+<div class="container">
+    <table class="table table-striped table-bordered table-sm" id="dtBasicExample">
+        <thead class="table-success">
+        <tr>
+            <th>Name</th>
+            <th>Map Parcel ID</th>
+            <th>Total</th>
+            <th>Property Type</th>
+            <th>Municipality</th>
+            <th>School District</th>
+            <th>Zip</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Half Baths</th>
+            <th>Garage Stalls</th>
+            <th>Sketch link</th>
+            <th>Parcel Report</th>
+            <th>Google Maps link</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in table %}
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.parcel_id }}</td>
+                <td>{{ data.total }}</td>
+                <td>{{ data.proptype }}</td>
+                <td>{{ data.municipali }}</td>
+                <td>{{ data.schooldist }}</td>
+                <td>{{ data.situszip }}</td>
+                <td>{{ data.bedrooms }}</td>
+                <td>{{ data.bathrooms }}</td>
+                <td>{{ data.halfbathro }}</td>
+                <td>{{ data.garagestal }}</td>
+                <td><a href={ data.sketch } target=_blank>Sketch</a></td>
+                <td><a href={ data.parcelrepo } target=_blank>Parcel report</a></td>
+                <td><a href={ data.glink } target=_blank>Google maps</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
